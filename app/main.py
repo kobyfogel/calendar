@@ -3,13 +3,12 @@ from app.database import models
 from app.database.database import engine, get_db
 from app.dependencies import (
     logger, MEDIA_PATH, STATIC_PATH, templates)
-# from app.internal.quotes import daily_quotes, load_quotes
 from app.internal import daily_quotes, json_data_loader
 from app.internal.security.ouath2 import my_exception_handler
 from app.routers import (
     agenda, calendar, categories, currency, dayview, email,
-    event, invitation, login, logout, profile, register,
-    search, telegram, whatsapp
+    event, reset_password, invitation, login, logout, profile,
+    register, search, telegram, whatsapp
 )
 from fastapi import Depends, FastAPI, Request
 from fastapi.staticfiles import StaticFiles
@@ -43,6 +42,7 @@ app.include_router(email.router)
 app.include_router(invitation.router)
 app.include_router(login.router)
 app.include_router(logout.router)
+app.include_router(reset_password.router)
 
 app.add_exception_handler(HTTP_401_UNAUTHORIZED, my_exception_handler)
 
@@ -52,6 +52,7 @@ app.logger = logger
 
 
 routers_to_include = [
+    reset_password.router,
     agenda.router,
     calendar.router,
     categories.router,

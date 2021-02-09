@@ -25,8 +25,8 @@ async def login_user_form(
         current_user: Union[CurrentUser, None] = Depends(current_user)
         ) -> templates:
     """rendering login route get method"""
-    if current_user:
-        return RedirectResponse(url='/')
+    # if current_user:
+    #     return RedirectResponse(url='/')
     return templates.TemplateResponse("login.html", {
         "request": request,
         "message": message,

@@ -71,3 +71,12 @@ body {
     padding-left: 12.5rem;
 }
 
+.forgot-password {
+  line-height: 0;
+  color: rgb(27, 4, 233);
+  padding-left: 12.5rem;
+}
+
+a:hover{
+  color: red
+}
